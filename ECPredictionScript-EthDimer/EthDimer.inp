@@ -1,0 +1,44 @@
+$comment
+	Ethylene	Dimer
+	Reference: JACS128,9882 (2006) by J.-L. Bredas
+$end
+
+$molecule
+  0  1
+--
+  0  1
+C   -0.5283333    0.2738333   -0.3116667
+C    0.5416667   -0.2661667    0.3183333
+H   -1.0183333    1.1308333    0.1283333
+H   -0.8683333   -0.0261667   -1.2916667
+H    1.0316667   -1.1261667   -0.1316667
+H    0.8416667    0.0138333    1.2883333
+--
+  0  1
+C    1.5016667    0.2833333   -3.4316667
+C    0.5816667    1.2513333   -3.4816667
+H    2.1416667    0.3343333   -2.5416667
+H    1.7416667   -0.4466667   -4.1816667
+H   -0.1383333    1.2913333   -4.2816667
+H    0.4416667    1.9913333   -2.7016667
+$end
+
+
+$rem
+        JOBTYPE      SP
+        METHOD           BLYP                   ! Set the exchange-correlation functions
+        BASIS        DZ*
+        LRC_DFT          TRUE                   ! Control the application of long-range-corrected DFT
+        OMEGA            410                    ! Set the range-separation parameter
+        !GUI  =  2
+        MAX_SCF_CYCLES   200
+        SCF_PRINT_FRGM   TRUE           ! for printing out SCF results of each fragments
+        SCF_FINAL_PRINT  2
+        SYM_IGNORE       TRUE           ! Necessary rem key for DC calculations.
+        SCF_GUESS        FRAGMO         ! Use MOs of each fragments.
+        STS_DC               FOCK       ! Use Frontier Molecular Orbital (FMO) approach
+        SCF_CONVERGENCE      8          ! 5 For SP calculations/8 For OPT, vibrational analysis and SSG calculation; see p. 1083 in Q-Chem Manual 5.0
+        STS_TRANS_DONOR      2-2
+        STS_TRANS_ACCEPTOR   2-2
+        XC_GRID  000100000974
+$end
